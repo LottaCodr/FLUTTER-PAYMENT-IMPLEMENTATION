@@ -46,6 +46,24 @@ class _PayStackPaymentSystemState extends State<PayStackPaymentSystem> {
     }
   }
 
+  //For The Charge Card
+  PaymentCard _getCardFromUI(){
+    return PaymentCard(
+        number: 'CardNumberHere',
+        cvc: 'Cardcvc',
+        expiryMonth: 0,
+        expiryYear: 0);
+  }
+
+  _chargeCard(String accessCode) async {
+    var charge = Charge()
+        ..accessCode = "accessCode"
+        ..card = _getCardFromUI();
+    final response = await plugin.chargeCard(
+        context,
+        charge: charge);
+  }
+
 
 
  @override
